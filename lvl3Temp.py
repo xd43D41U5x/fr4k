@@ -22,6 +22,9 @@ def lvl3Temp():
 
     #While function helper/mid lookup
     def MainStringShift(start,key):
+        #Attempt to handle reverse order of supplied values.
+        if not isinstance(start,int):
+            start,key = key,start
         data = StringValues[start-genPosShift-whilePosShift]
         decodedVal = bDecode(data)
         decValue = rc4Decrypt(decodedVal,key)
@@ -29,6 +32,9 @@ def lvl3Temp():
 
     #While function helper/mid lookup
     def valueStringShift(start,key):
+        #Attempt to handle reverse order of supplied values.
+        if not isinstance(start,int):
+            start,key = key,start
         data = StringValues[start+varPosShift-genPosShift]
         decodedVal = bDecode(data)
         decValue = rc4Decrypt(decodedVal,key)
@@ -154,7 +160,7 @@ def lvl3Temp():
         for line in file:
             if ("parseint" not in line.lower()):
                 #Find all string lookups and decrypt
-                decMatch = re.findall('[\w\d]{0,2}\_0x[\w\d]+\([^\_]{4,6}[^\)]+',line)
+                decMatch = re.findall('[\w\d]{0,2}\_0x[\w\d]+\([^\_]{4,6}\,\s?.{4,6}',line)
                 for d in decMatch:
                     funValue = d.split("(",1)
                     decValues = funValue[1].split(',')
