@@ -1,3 +1,5 @@
+_Note: With this new version, the main script calls all other needed scripts.  The other items below are still relevant._ 
+
 This tool is specifically designed to handle output from https://obfuscator.io/.  While full automation could be possible, that seems to be the downfall of other similar tools.  To help try and avoid the same issues, we are going to do this in a semi-automated fashion. 
  
 Let's step through how this obfuscation site works and what this code does.
